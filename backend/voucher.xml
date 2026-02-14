@@ -1,0 +1,45 @@
+<ENVELOPE>
+    <HEADER>
+        <TALLYREQUEST>Import Data</TALLYREQUEST>
+    </HEADER>
+    <BODY>
+        <IMPORTDATA>
+            <REQUESTDESC>
+                <REPORTNAME>Vouchers</REPORTNAME>
+                <STATICVARIABLES>
+                    <SVCURRENTCOMPANY>Vrhealthy</SVCURRENTCOMPANY>
+                </STATICVARIABLES>
+            </REQUESTDESC>
+            <REQUESTDATA>
+                <TALLYMESSAGE xmlns:UDF="TallyUDF">
+                    <VOUCHER VCHTYPE="Sales" ACTION="Create" OBJVIEW="Accounting Voucher View">
+                        <DATE>20250402</DATE>
+                        <EFFECTIVEDATE>20250402</EFFECTIVEDATE>
+                        <VOUCHERTYPENAME>Sales</VOUCHERTYPENAME>
+                        <VOUCHERNUMBER>S-001</VOUCHERNUMBER>
+                        <PARTYLEDGERNAME>Rahul Traders</PARTYLEDGERNAME>
+                        
+                        <NARRATION>Sales to Rahul Traders</NARRATION>
+                        <ALLLEDGERENTRIES.LIST>
+                            <LEDGERNAME>Rahul Traders</LEDGERNAME>
+                            <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+                            <AMOUNT>-11800.0</AMOUNT>
+                        </ALLLEDGERENTRIES.LIST>\n                        <ALLLEDGERENTRIES.LIST>
+                            <LEDGERNAME>Sales</LEDGERNAME>
+                            <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+                            <AMOUNT>-10000.0</AMOUNT>
+                        </ALLLEDGERENTRIES.LIST>\n                        <ALLLEDGERENTRIES.LIST>
+                            <LEDGERNAME>Cgst</LEDGERNAME>
+                            <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+                            <AMOUNT>-900.0</AMOUNT>
+                        </ALLLEDGERENTRIES.LIST>\n                        <ALLLEDGERENTRIES.LIST>
+                            <LEDGERNAME>Sgst</LEDGERNAME>
+                            <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+                            <AMOUNT>-900.0</AMOUNT>
+                        </ALLLEDGERENTRIES.LIST>
+                    </VOUCHER>
+                </TALLYMESSAGE>
+            </REQUESTDATA>
+        </IMPORTDATA>
+    </BODY>
+</ENVELOPE>
