@@ -1,0 +1,36 @@
+<ENVELOPE>
+    <HEADER>
+        <TALLYREQUEST>Import Data</TALLYREQUEST>
+    </HEADER>
+    <BODY>
+        <IMPORTDATA>
+            <REQUESTDESC>
+                <REPORTNAME>Vouchers</REPORTNAME>
+                <STATICVARIABLES>
+                    <SVCURRENTCOMPANY>TallyHealth</SVCURRENTCOMPANY>
+                </STATICVARIABLES>
+            </REQUESTDESC>
+            <REQUESTDATA>
+                <TALLYMESSAGE xmlns:UDF="TallyUDF">
+                    <VOUCHER REMOTEID="" VCHKEY="" VCHTYPE="Sales" ACTION="Create" OBJVIEW="Invoice Voucher View">
+                        <DATE>20260212</DATE>
+                        <VOUCHERTYPENAME>Sales</VOUCHERTYPENAME>
+                        <VOUCHERNUMBER>INV001</VOUCHERNUMBER>
+                        <PARTYLEDGERNAME>ABC Corporation</PARTYLEDGERNAME>
+                        <NARRATION>Sale of goods and services</NARRATION>
+                        <ALLLEDGERENTRIES.LIST>
+                            <LEDGERNAME>ABC Corporation</LEDGERNAME>
+                            <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+                            <AMOUNT>10000</AMOUNT>
+                        </ALLLEDGERENTRIES.LIST>
+                        <ALLLEDGERENTRIES.LIST>
+                            <LEDGERNAME>Sales</LEDGERNAME>
+                            <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+                            <AMOUNT>-10000</AMOUNT>
+                        </ALLLEDGERENTRIES.LIST>
+                    </VOUCHER>
+                </TALLYMESSAGE>
+            </REQUESTDATA>
+        </IMPORTDATA>
+    </BODY>
+</ENVELOPE>

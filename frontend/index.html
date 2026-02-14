@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to Tally AI Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>📊 Excel to Tally AI Agent</h1>
+            <p class="subtitle">Automatically convert Excel data to Tally vouchers</p>
+
+            <!-- Company Selector -->
+            <div class="company-selector">
+                <label for="companySelect">Select Tally Company:</label>
+                <select id="companySelect" class="company-dropdown">
+                    <option value="">Loading companies...</option>
+                </select>
+            </div>
+
+            <div id="healthStatus" class="health-status">
+                <span class="status-indicator"></span>
+                <span class="status-text">Checking Tally connection...</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Step 1: Upload File -->
+            <section id="uploadSection" class="card">
+                <div class="card-header">
+                    <h2>Step 1: Upload Excel File</h2>
+                </div>
+                <div class="card-body">
+                    <div class="upload-zone" id="uploadZone">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p class="upload-text">Drag & drop your Excel file here</p>
+                        <p class="upload-subtext">or click to browse</p>
+                        <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" hidden>
+                    </div>
+                    <div id="fileInfo" class="file-info hidden">
+                        <p><strong>File:</strong> <span id="fileName"></span></p>
+                        <p><strong>Rows:</strong> <span id="rowCount"></span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Select Voucher Type -->
+            <section id="voucherSection" class="card hidden">
+                <div class="card-header">
+                    <h2>Step 2: Select Voucher Type</h2>
+                </div>
+                <div class="card-body">
+                    <div class="voucher-types">
+                        <button class="voucher-btn" data-type="sales">
+                            <span class="voucher-icon">💰</span>
+                            <span>Sales</span>
+                        </button>
+                        <button class="voucher-btn" data-type="purchase">
+                            <span class="voucher-icon">🛒</span>
+                            <span>Purchase</span>
+                        </button>
+                        <button class="voucher-btn" data-type="payment">
+                            <span class="voucher-icon">💸</span>
+                            <span>Payment</span>
+                        </button>
+                        <button class="voucher-btn" data-type="receipt">
+                            <span class="voucher-icon">🧾</span>
+                            <span>Receipt</span>
+                        </button>
+                        <button class="voucher-btn" data-type="journal">
+                            <span class="voucher-icon">📝</span>
+                            <span>Journal</span>
+                        </button>
+                        <button class="voucher-btn" data-type="contra">
+                            <span class="voucher-icon">🏦</span>
+                            <span>Contra</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 3: Map Columns -->
+            <section id="mappingSection" class="card hidden">
+                <div class="card-header">
+                    <h2>Step 3: Confirm Column Mapping</h2>
+                    <p class="card-subtitle">AI has suggested these mappings. Adjust if needed.</p>
+                </div>
+                <div class="card-body">
+                    <div id="mappingContainer" class="mapping-container"></div>
+                    <div class="mapping-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="createLedgers" checked>
+                            <span>Automatically create missing ledgers</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 4: Preview Data -->
+            <section id="previewSection" class="card hidden">
+                <div class="card-header">
+                    <h2>Data Preview</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-container">
+                        <table id="previewTable" class="data-table">
+                            <thead id="previewTableHead"></thead>
+                            <tbody id="previewTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <div id="actionButtons" class="action-buttons hidden">
+                <button id="processBtn" class="btn btn-primary">
+                    <span>Process & Send to Tally</span>
+                </button>
+                <button id="resetBtn" class="btn btn-secondary">
+                    <span>Start Over</span>
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="card hidden">
+                <div class="card-header">
+                    <h2>Processing Results</h2>
+                </div>
+                <div class="card-body">
+                    <div id="resultsContent"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="spinner"></div>
+            <p id="loadingText">Processing...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

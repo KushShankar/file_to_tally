@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Start Tally Agent
+Comment=Start the Excel to Tally AI Agent
+Exec=/home/kush/Downloads/tallyagent/run_linux.sh
+Icon=utilities-terminal
+Terminal=true
+Type=Application
+Categories=Utility;
